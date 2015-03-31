@@ -74,6 +74,13 @@ final class ArcanistSettings {
           'engine is specified by the current project.'),
         'example' => '"ExampleUnitTestEngine"',
       ),
+      'unit.dirs' => array(
+        'type' => 'list',
+        'help' => pht(
+          'List of subdirectories of project directory which should be '.
+          'checked for tests existance. Only this directories will be checked.'),
+        'example' => '["testing"]',
+      ),
       'arc.feature.start.default' => array(
         'type' => 'string',
         'help' => pht(

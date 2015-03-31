@@ -50,6 +50,8 @@ abstract class ArcanistWorkflow extends Phobject {
   private $forcedConduitVersion;
   private $conduitTimeout;
 
+  private $unitDirs;
+
   private $userPHID;
   private $userName;
   private $repositoryAPI;
@@ -157,6 +159,16 @@ abstract class ArcanistWorkflow extends Phobject {
   final public function getConduitURI() {
     return $this->conduitURI;
   }
+
+  final public function setUnitDirs($unit_dirs) {
+    $this->unitDirs = $unit_dirs;
+    return $this;
+  }
+
+  final public function getUnitDirs() {
+    return $this->unitDirs;
+  }
+
 
   /**
    * Open a conduit channel to the server which was previously configured by

@@ -172,6 +172,14 @@ EOTEXT
       $this->engine->setEnableAsyncTests(false);
     }
 
+    // Set which subdirectories should be checked for tests if specified
+
+    // print_r($this->getUnitDirs());
+    $unit_dirs = $this->getUnitDirs();
+    if ($unit_dirs) {
+      $this->engine->setUnitDirs($unit_dirs);
+    }
+
     $results = $this->engine->run();
     $this->testResults = $results;
 

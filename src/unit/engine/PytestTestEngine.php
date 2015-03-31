@@ -6,6 +6,7 @@
 final class PytestTestEngine extends ArcanistUnitTestEngine {
 
   public function run() {
+
     $working_copy = $this->getWorkingCopy();
     $this->project_root = $working_copy->getProjectRoot();
 
@@ -42,6 +43,23 @@ final class PytestTestEngine extends ArcanistUnitTestEngine {
         $this->project_root,
         $cmd_line);
     }
+
+    $unit_dirs_info = $this->project_root;
+    $unit_dirs = $this->getUnitDirs();
+    if ($unit_dirs) {
+      $unit_dirs_info = csprintf(
+        '%LR',
+        $unit_dirs);
+      foreach ($unit_dirs as $key => $dir) {
+        $unit_dirs[$key] = $this->project_root . "/" . $dir;
+      }
+      $cmd_line = csprintf(
+        '%C %LR',
+        $cmd_line,
+        $unit_dirs);
+    }
+
+    echo "Looking for test in all subdirectories of: [" . $unit_dirs_info . "]\n";
 
     return new ExecFuture('%C', $cmd_line);
   }

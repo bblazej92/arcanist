@@ -11,6 +11,7 @@ abstract class ArcanistUnitTestEngine {
   protected $diffID;
   private $enableAsyncTests;
   private $enableCoverage;
+  private $unitDirs;
   private $runAllTests;
   protected $renderer;
 
@@ -71,6 +72,15 @@ abstract class ArcanistUnitTestEngine {
 
   final public function getPaths() {
     return $this->paths;
+  }
+
+  final public function setUnitDirs(array $dirs) {
+    $this->unitDirs = $dirs;
+    return $this;
+  }
+
+  final public function getUnitDirs() {
+    return $this->unitDirs;
   }
 
   final public function setArguments(array $arguments) {

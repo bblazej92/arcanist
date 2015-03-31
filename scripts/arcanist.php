@@ -250,6 +250,13 @@ try {
     }
   }
 
+
+  // Set unit tests source directories
+  $unit_dirs = $configuration_manager->getConfigFromAnySource('unit.dirs');
+  if ($unit_dirs) {
+    $workflow->setUnitDirs($unit_dirs);
+  }
+  
   if ($conduit_uri) {
     // Set the URI path to '/api/'. TODO: Originally, I contemplated letting
     // you deploy Phabricator somewhere other than the domain root, but ended
