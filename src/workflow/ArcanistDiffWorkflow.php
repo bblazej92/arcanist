@@ -1301,6 +1301,7 @@ EOTEXT
         $argv[] = $repository_api->getBaseCommit();
       }
       $unit_workflow = $this->buildChildWorkflow('unit', $argv);
+      $unit_workflow->setUnitDirs($this->getUnitDirs());
       $unit_result = $unit_workflow->run();
 
       switch ($unit_result) {
