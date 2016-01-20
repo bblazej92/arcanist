@@ -25,7 +25,7 @@ final class PytestTestEngine extends ArcanistUnitTestEngine {
         $stderr);
     }
 
-    $future = new ExecFuture('coverage xml -o %s', $cover_tmp);
+    $future = new ExecFuture('coverage xml -i -o %s', $cover_tmp);
     $future->setCWD($this->project_root);
     $future->resolvex();
 
